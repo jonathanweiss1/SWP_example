@@ -33,7 +33,7 @@ add_executable (PatMan
 #tell cmake to also search the subdirectory PatientDataCalculator of the current directory for source files and libraries
 #This subdirectory contains all files for the business logic of PatMan. The business logic is compiled into a seperate library.
 #Each subdirectory that has to be added this way has to include a separate CMakeLists.txt file.
-add_subdirectory(PatientDataCalculator)
+add_subdirectory(patientdatacalculator)
 
 #specify which libraries to use
 target_link_libraries(PatMan PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Sql)
