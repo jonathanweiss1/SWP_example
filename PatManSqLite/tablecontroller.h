@@ -2,7 +2,7 @@
 #define TABLECONTROLLER_H
 
 #include <QObject>
-#include "patientdatacalculator/patientdatacalculator.h"
+#include <patientdatacalculator.h>
 #include "patienttablemodel.h"
 
 
