@@ -32,6 +32,11 @@ add_executable (PatMan
     patienttablemodel.h
 )
 
+#read the hostname of the current system and create the c++ preprocessor variable HOSTNAME with it.
+#this way cmake places the address of the mysql database into the c++ code. For example "im-vm-034".
+cmake_host_system_information(RESULT HOST QUERY HOSTNAME)
+add_compile_definitions(HOSTNAME="${HOST}")
+
 #tell cmake to also search the subdirectory PatientDataCalculator of the current directory for source files and libraries
 #This subdirectory contains all files for the business logic of PatMan. The business logic is compiled into a seperate library.
 #Each subdirectory that has to be added this way has to include a separate CMakeLists.txt file.

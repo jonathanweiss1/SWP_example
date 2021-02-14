@@ -5,7 +5,7 @@ patientTableModel::patientTableModel()
     //establish a database connection. SQLite will create the database if it doesn't exist
     db = new QSqlDatabase(QSqlDatabase::addDatabase(DatabaseDriver));
     db->setDatabaseName("patmandatabase");
-    db->setHostName("im-vm-034");
+    db->setHostName(HOSTNAME);
     db->setPort(3306);
     db->setUserName("PatMan");
     db->setPassword("patman");
