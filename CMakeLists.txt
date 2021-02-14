@@ -1,6 +1,15 @@
+#If you want to get more in-depth with cmake and the different functions used here, visit:
+#https://cmake.org/cmake/help/latest/ for the documentation
+
 cmake_minimum_required(VERSION 3.5)
 
+
+#PatMan is the name of this project. After languages you should add all programming languages that are needed to build this project.
+#CXX means c++. Consult the documentation of the project function to get the proper short-name for your programming language.
 project(PatMan LANGUAGES CXX)
+enable_testing()
+
+#The following set commands should be appropriate for most projects:
 
 #Automatically add the current source and build directories to the include path.
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -15,10 +24,14 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #load settings for Qt
+#List all Qt components needed for your project here: For example: Widgets, Sql, Network, ...
+#Don't forget to also include the matching library at the end of this file
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Sql REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Sql REQUIRED)
 
 #generate an executable called PatMan that uses the listed source files
+#list all your source files here. If you use QtCreator, you should get automatically redirected to this file whenever you create
+#a new file
 add_executable (PatMan
     main.cpp
     mainwindow.cpp
@@ -33,7 +46,7 @@ add_executable (PatMan
 #tell cmake to also search the subdirectory PatientDataCalculator of the current directory for source files and libraries
 #This subdirectory contains all files for the business logic of PatMan. The business logic is compiled into a seperate library.
 #Each subdirectory that has to be added this way has to include a separate CMakeLists.txt file.
-add_subdirectory(PatientDataCalculator)
+add_subdirectory(patientdatacalculator)
 
 #specify which libraries to use
 target_link_libraries(PatMan PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Sql)
